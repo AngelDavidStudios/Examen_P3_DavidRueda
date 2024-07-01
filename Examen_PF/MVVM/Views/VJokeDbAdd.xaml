@@ -2,8 +2,38 @@
 
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Examen_PF.MVVM.Views.VJokeDbAdd">
-    <ContentPage.Content>
+             x:Class="Examen_PF.MVVM.Views.VJokeDbAdd"
+             Title="{Binding PageTitle}">
+
+    <VerticalStackLayout Padding="15">
+        <ActivityIndicator IsVisible="{Binding LoadingVisible}"
+                           IsRunning="{Binding LoadingVisible}"
+                           Color="Blue"
+                           HeightRequest="30" />
         
-    </ContentPage.Content>
+        <Button Text="Broma Aleatoria"
+                Command="{Binding FetchJokeCommand}"
+                BackgroundColor="Blue" />
+
+        <Label Text="Categoria" />
+        <Entry Text="{Binding JokesDTO.Categories}"
+               Margin="0,0,0,10" />
+
+        <Label Text="Url" />
+        <Entry Text="{Binding JokesDTO.Url}"
+               Margin="0,0,0,10" />
+
+        <Label Text="Url de la Imagen" />
+        <Entry Text="{Binding JokesDTO.IconUrl}"
+               Margin="0,0,0,10" />
+
+        <Label Text="Descrpicion" />
+        <Entry Text="{Binding JokesDTO.Value}"
+               Keyboard="Numeric"
+               Margin="0,0,0,10" />
+
+        <Button Text="Guardar"
+                Command="{Binding SaveCommand}"
+                BackgroundColor="Green" />
+    </VerticalStackLayout>
 </ContentPage>

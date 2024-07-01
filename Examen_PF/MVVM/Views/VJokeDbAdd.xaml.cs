@@ -1,15 +1,12 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Examen_PF.MVVM.ViewModels;
 
 namespace Examen_PF.MVVM.Views;
 
 public partial class VJokeDbAdd : ContentPage
 {
-    public VJokeDbAdd()
+    public VJokeDbAdd(VMJokeDbAdd viewModel)
     {
         InitializeComponent();
+        BindingContext = viewModel;
     }
 }
