@@ -1,15 +1,47 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8"?>
+
 <Shell
     x:Class="Examen_PF.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:Examen_PF"
+    xmlns:views="clr-namespace:Examen_PF.MVVM.Views"
     Shell.FlyoutBehavior="Disabled"
     Title="Examen_PF">
+    <Shell.Resources>
+        <Style x:Key="BaseStyle"
+               TargetType="Element">
+            <Setter Property="Shell.BackgroundColor"
+                    Value="{StaticResource MyColorInterface}" />
+            <Setter Property="Shell.ForegroundColor"
+                    Value="White" />
+            <Setter Property="Shell.TitleColor"
+                    Value="White" />
+            <Setter Property="Shell.DisabledColor"
+                    Value="#B4FFFFFF" />
+            <Setter Property="Shell.UnselectedColor"
+                    Value="#95FFFFFF" />
+            <Setter Property="Shell.NavBarIsVisible"
+                    Value="False" />
+        </Style>
+    </Shell.Resources>
 
-    <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
+    <TabBar>
+        <ShellContent
+            x:Name="DR_Welcome"
+            Style="{StaticResource BaseStyle}"
+            Title="Home"
+            ContentTemplate="{DataTemplate local:MainPage}"
+            Route="MainPage"
+            Icon="{OnPlatform 'icon_notes.png', iOS='icon_notes_ios.png', MacCatalyst='icon_notes_ios.png'}" />
+
+        <ShellContent
+            x:Name="DR_CRUDPokemon"
+            Style="{StaticResource BaseStyle}"
+            Title="Local DataBase"
+            ContentTemplate="{DataTemplate views:VJokeDbList}"
+            Route="VPokeCRUD"
+            Icon="{OnPlatform 'icon_notes.png', iOS='icon_notes_ios.png', MacCatalyst='icon_notes_ios.png'}" />
+    </TabBar>
 
 </Shell>
