@@ -9,7 +9,7 @@
             Spacing="25">
             <Image
                 Source="kid_icarus_char.png"
-                HeightRequest="185"
+                HeightRequest="195"
                 Aspect="AspectFit"
                 Margin="10"/>
 
@@ -20,8 +20,8 @@
 
             <Label
                 Text="A mi David Rueda &#10; me gusta ese personaje 
-                &#10; porque me representa como el simbolo &#10;
-                de ser uan persona que propone y lucha por sus sueños
+                &#10; porque me representa como el simbolo 
+                &#10; de ser una persona que propone y lucha por sus sueños
                 &#10; y no se rinde ante las adversidades"
                 Style="{StaticResource SubHeadline}"
                 SemanticProperties.HeadingLevel="Level2"

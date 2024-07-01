@@ -33,10 +33,10 @@
             Title="Home"
             ContentTemplate="{DataTemplate local:MainPage}"
             Route="MainPage"
-            Icon="{OnPlatform 'icon_notes.png', iOS='icon_notes_ios.png', MacCatalyst='icon_notes_ios.png'}" />
+            Icon="{OnPlatform 'icon_about.png', iOS='icon_about_ios.png', MacCatalyst='icon_about_ios.png'}" />
 
         <ShellContent
-            x:Name="DR_CRUDPokemon"
+            x:Name="DR_CRUDJokes"
             Style="{StaticResource BaseStyle}"
             Title="Local DataBase"
             ContentTemplate="{DataTemplate views:VJokeDbList}"
