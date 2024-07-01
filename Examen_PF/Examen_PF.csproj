@@ -79,7 +79,6 @@
       <Folder Include="DTOs\" />
       <Folder Include="MVVM\ViewModels\" />
       <Folder Include="MVVM\Views\" />
-      <Folder Include="Utility\" />
     </ItemGroup>
 
 </Project>
