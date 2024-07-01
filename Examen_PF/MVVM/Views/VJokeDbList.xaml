@@ -2,8 +2,78 @@
 
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Examen_PF.MVVM.Views.VJokeDbList">
-    <ContentPage.Content>
-        
-    </ContentPage.Content>
+             x:Class="Examen_PF.MVVM.Views.VJokeDbList"
+             xmlns:model="clr-namespace:Examen_PF.DTOs">
+        <Grid RowDefinitions="Auto,Auto,*"
+          RowSpacing="15"
+          Margin="15">
+
+        <Button Grid.Row="0"
+                Text="Nueva Broma"
+                Command="{Binding CreateCommand}" />
+        <Label Grid.Row="1"
+               Text="Lista de Bromas"
+               FontSize="Subtitle" />
+        <ScrollView Grid.Row="2">
+            <CollectionView ItemsSource="{Binding JokeList}">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout ItemSpacing="5" Orientation="Vertical" />
+                </CollectionView.ItemsLayout>
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="model:JokesDTO">
+                        <Border Padding="10,5" 
+                                HorizontalOptions="FillAndExpand">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="5" />
+                            </Border.StrokeShape>
+
+                            <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto"
+                                  ColumnDefinitions="Auto,*">
+                                
+                                <Image Grid.Row="0" Grid.RowSpan="10" Grid.Column="0"
+                                       Source="{Binding IconUrl}"
+                                       WidthRequest="80"
+                                       HeightRequest="80"
+                                       HorizontalOptions="Start"
+                                       Margin="0,0,10,0" />
+                                    
+                                    <Label Grid.Row="0" Grid.Column="1"
+                                           Text="ID Joke:" FontAttributes="Bold" />
+                                    <Label Grid.Row="0" Grid.Column="2" HorizontalOptions="End"
+                                           Text="{Binding IdJoke}" />
+
+                                    <Label Grid.Row="1" Grid.Column="1"
+                                           Text="Categoria:" FontAttributes="Bold" />
+                                    <Label Grid.Row="1" Grid.Column="2" HorizontalOptions="End"
+                                           Text="{Binding Categories}" />
+                                    
+                                    <Label Grid.Row="2" Grid.Column="1"
+                                           Text="Descripcion:" FontAttributes="Bold" />
+                                    <Label Grid.Row="2" Grid.Column="2" HorizontalOptions="End"
+                                           Text="{Binding Value}" />
+
+                                    <Label Grid.Row="5" Grid.Column="1" Padding="0,15,10,5"
+                                           Text="Editar" TextColor="Blue">
+                                        <Label.GestureRecognizers>
+                                            <TapGestureRecognizer
+                                                Command="{Binding BindingContext.EditCommand, Source={x:RelativeSource AncestorType={x:Type ContentPage}}}"
+                                                CommandParameter="{Binding}" />
+                                        </Label.GestureRecognizers>
+                                    </Label>
+                                    <Label Grid.Row="5" Grid.Column="2" Padding="10,15,0,5"
+                                           Text="Eliminar" TextColor="Red" HorizontalOptions="End">
+                                        <Label.GestureRecognizers>
+                                            <TapGestureRecognizer
+                                                Command="{Binding BindingContext.DeleteCommand, Source={x:RelativeSource AncestorType={x:Type ContentPage}}}"
+                                                CommandParameter="{Binding}" />
+                                        </Label.GestureRecognizers>
+                                    </Label>
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </ScrollView>
+    </Grid>
 </ContentPage>
